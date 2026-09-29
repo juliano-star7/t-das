@@ -1,0 +1,41 @@
+{
+  "version": "v1",
+  "host": "https://adb-5678659344564033.13.azuredatabricks.net",
+  "remote_path": "/Workspace/Users/sg31925@stellantis.com/databricks_apps/t-das-app_2026_02_05-13_45/t-das",
+  "last_modified_times": {
+    ".streamlit/config.toml": "2026-09-14T09:05:18.09618-03:00",
+    "DAQ.png": "2026-09-14T09:05:18.8194405-03:00",
+    "DAQ_branco.png": "2026-09-14T09:05:19.5170772-03:00",
+    "app.py": "2026-09-14T09:05:20.0312976-03:00",
+    "app.yaml": "2026-09-14T09:05:20.5604061-03:00",
+    "logo_stellantis.png": "2026-09-14T09:05:21.0773653-03:00",
+    "logo_stellantis_branco.png": "2026-09-14T09:05:21.6719205-03:00",
+    "requirements.txt": "2026-09-14T09:18:21.6965958-03:00",
+    "t-das.png": "2026-09-14T09:05:22.7155517-03:00",
+    "template.html": "2026-09-14T09:05:24.7558179-03:00"
+  },
+  "local_to_remote_names": {
+    ".streamlit/config.toml": ".streamlit/config.toml",
+    "DAQ.png": "DAQ.png",
+    "DAQ_branco.png": "DAQ_branco.png",
+    "app.py": "app.py",
+    "app.yaml": "app.yaml",
+    "logo_stellantis.png": "logo_stellantis.png",
+    "logo_stellantis_branco.png": "logo_stellantis_branco.png",
+    "requirements.txt": "requirements.txt",
+    "t-das.png": "t-das.png",
+    "template.html": "template.html"
+  },
+  "remote_to_local_names": {
+    ".streamlit/config.toml": ".streamlit/config.toml",
+    "DAQ.png": "DAQ.png",
+    "DAQ_branco.png": "DAQ_branco.png",
+    "app.py": "app.py",
+    "app.yaml": "app.yaml",
+    "logo_stellantis.png": "logo_stellantis.png",
+    "logo_stellantis_branco.png": "logo_stellantis_branco.png",
+    "requirements.txt": "requirements.txt",
+    "t-das.png": "t-das.png",
+    "template.html": "template.html"
+  }
+}

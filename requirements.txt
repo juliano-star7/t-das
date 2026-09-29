@@ -1,0 +1,15 @@
+databricks-sql-connector~=3.4.0
+databricks-sdk~=0.33.0
+streamlit~=1.38.0
+pandas~=2.2.3
+numpy
+scipy
+matplotlib
+plotly
+openai
+asammdf
+python-calamine
+xlsxwriter
+reportlab==4.2.5
+xhtml2pdf==0.2.20
+kaleido==0.2.1

@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8" />
+    <title>T-DAS Standardized Report</title>
+    <style>
+        @page {
+            size: A4 portrait;
+            
+            /* 1. Aumenta as margens superior e inferior para dar espaço */
+            margin-top: 5.5cm;  /* Espaço para o cabeçalho */
+            margin-bottom: 2.5cm; /* Espaço para o rodapé */
+            margin-left: 1.5cm;
+            margin-right: 1.5cm;
+
+            /* 2. Inicia o contador de páginas */
+            counter-increment: page;
+
+            /* 3. Coloca os elementos capturados nas margens */
+            @top-center {
+                content: element(pageHeader);
+            }
+
+            @bottom-center {
+                content: element(pageFooter);
+            }
+        }
+
+        /* --- CAPTURA DO CABEÇALHO E RODAPÉ --- */
+        
+        /* 4. Captura o cabeçalho para o @page */
+        #page-header {
+            position: running(pageHeader);
+            width: 100%;
+        }
+
+        /* 5. Captura e estiliza o novo rodapé */
+        #page-footer {
+            position: running(pageFooter);
+            width: 100%;
+            text-align: left;
+            font-family: "Segoe UI", Arial, sans-serif;
+            font-size: 10pt;
+            color: #555;
+            font-weight: 600;
+        }
+
+        /* 6. Regra para exibir o número da página */
+        #page-number-placeholder::after {
+            content: counter(page);
+        }
+
+        /* --- RESTANTE DO SEU CSS --- */
+
+        body {
+            font-family: "Segoe UI", Arial, sans-serif;
+            color: #333;
+            font-size: 11pt;
+            line-height: 1.4;
+        }
+
+        /* --- CABEÇALHO COM TABELA --- */
+        .header-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .header-table td {
+            border: 1px solid #0b3b66;
+            padding: 10px;
+            vertical-align: middle;
+        }
+
+        .header-table td:first-child {
+            width: 25%;
+            text-align: center;
+        }
+
+        .logo {
+            width: 150px;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .header-title-block {
+            text-align: center;
+            width: 50%;
+        }
+
+        .header-title-block h1 {
+            font-size: 16pt;
+            font-weight: 700;
+            color: #0b3b66;
+            margin: 0;
+        }
+
+        .header-title-block h2 {
+            font-size: 12pt;
+            font-weight: 600;
+            color: #444;
+            margin: 5px 0 0 0;
+        }
+
+        .header-date {
+            text-align: right;
+            width: 25%;
+            font-size: 10pt;
+            color: #555;
+        }
+
+        section {
+            margin-bottom: 20px;
+        }
+
+        h3 {
+            font-size: 12pt;
+            color: #0b3b66;
+            margin-bottom: 8px;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 4px;
+            border-left: 4px solid #0b3b66;
+            padding-left: 8px;
+        }
+
+        .info-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 10pt;
+        }
+
+        .info-table td {
+            padding: 5px 4px;
+            border-bottom: 1px solid #eee;
+            text-align: justify;
+            word-wrap: break-word;
+        }
+
+        .info-table td:first-child {
+            font-weight: bold;
+            color: #333;
+            width: 180px;
+            text-align: justify;
+        }
+
+        .observations-text {
+            font-size: 10pt;
+            color: #333;
+            line-height: 1.5; /* Aumenta levemente a altura da linha */
+            text-align: justify;
+            word-wrap: break-word;
+            background: #fdfdfd;
+            border: 1px solid #eee;
+            
+            /* Padding extra embaixo evita que a última linha toque a borda de corte */
+            padding: 10px 10px 20px 10px; 
+            border-radius: 4px;
+
+            /* Propriedades de quebra de página */
+            page-break-inside: auto; 
+            break-inside: auto;
+            
+            /* Garante que o padding não afete o tamanho total de forma estranha */
+            box-sizing: border-box; 
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div id="page-header">
+        <table class="header-table">
+            <tr>
+                <td>
+                    {% if dados.caminho_logo_uri %}
+                    <img src="{{ dados.caminho_logo_uri }}" alt="Logo" class="logo" />
+                    {% endif %}
+                </td>
+                <td class="header-title-block">
+                    <h2>STELLANTIS AUTOMOVEIS BRASIL LTDA</h2>
+                    <h2>CLIMATIC WIND TUNEL TESTS - BETIM </h2>
+                    <h2>Avenida Contorno, 3455 – Paulo Camilo</h2>
+                    <h2>CEP 32669-900 – Betim – Minas Gerais – MG </h2>
+                </td>
+                <td class="header-date">
+                    <p><strong>Date:</strong> {{ dados.test_date }}</p>
+                    
+                    <p><strong>Page:</strong> <span id="page-number-placeholder"></span></p>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div id="page-footer">
+        PDT / VEHE / VEPE / EMAT / SATC / TEST
+    </div>
+
+    <section>
+        <div style="display: flex; align-items: center; justify-content: center; text-align: center; margin-top: 15px; margin-bottom: 15px;">
+            {% if dados.caminho_logo_tdas_uri %}
+            <img src="{{ dados.caminho_logo_tdas_uri }}" alt="T-DAS Logo" style="height: 90px; margin-right: 30px; vertical-align: middle;">
+            {% endif %}
+
+            <div>
+                <h1 style="font-size: 14pt; font-weight: bold; margin-bottom: 2px; margin-top: 0;">T-DAS (Thermal data analysis system) standardized report</h1>
+                <h1 style="font-size: 14pt; font-weight: bold; margin-top: 0; margin-bottom: 0;">{{ dados.test_performed }}</h1>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h3>Test General Information</h3>
+        <table class="info-table">
+            <tr>
+                <td>Test Date:</td>
+                <td>{{ dados.test_date }}</td>
+            </tr>
+        </table>
+    </section>
+
+    <section>
+        <h3>Test Vehicle Specifications</h3>
+        <table class="info-table">
+            <tr>
+                <td>Project:</td>
+                <td>{{ dados.project }}</td>
+            </tr>
+            <tr>
+                <td>Brand:</td>
+                <td>{{ dados.brand }}</td>
+            </tr>
+            <tr>
+                <td>Vehicle Version:</td>
+                <td>{{ dados.vehicle_version }}</td>
+            </tr>
+            <tr>
+                <td>Market:</td>
+                <td>{{ dados.market }}</td>
+            </tr>
+            <tr>
+                <td>Engine type:</td>
+                <td>{{ dados.engine_type }}</td>
+            </tr>
+            <tr>
+                <td>Transmission:</td>
+                <td>{{ dados.transmission }}</td>
+            </tr>
+            <tr>
+                <td>Model Year:</td>
+                <td>{{ dados.model_year }}</td>
+            </tr>
+            <tr>
+                <td>Project phase:</td>
+                <td>{{ dados.project_phase }}</td>
+            </tr>
+            <tr>
+                <td>Chassis (VIN):</td>
+                <td>{{ dados.chassi_vin }}</td>
+            </tr>
+        </table>
+    </section>
+
+    <section>
+        <h3>Test Responsible</h3>
+        <table class="info-table">
+            <tr>
+                <td>Test Engineer:</td>
+                <td>{{ dados.test_engineer }}</td>
+            </tr>
+            <tr>
+                <td>Project Engineer:</td>
+                <td>{{ dados.project_engineer }}</td>
+            </tr>
+        </table>
+    </section>
+
+    <section>
+        <h3>Test Notes & Observations</h3>
+        <div class="observations-text">
+            {{ dados.observations | default('No observations provided.') }}
+        </div>
+    </section>
+</body>
+</html>
