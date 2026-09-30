@@ -14,6 +14,7 @@ st.set_page_config(
 
 // Set the default theme to light mode
 
+
 def set_light_theme():
     config_dir = ".streamlit"
     os.makedirs(config_dir, exist_ok=True)
