@@ -1,11 +1,19 @@
-command: [
-  "streamlit", 
-  "run",
-  "app.py"
-]
+command:
+  - "streamlit"
+  - "run"
+  - "app.py"
+  - "--server.port"
+  - "$DATABRICKS_APP_PORT"
+  - "--server.address"
+  - "0.0.0.0"
+
+resources:
+  - name: sql-warehouse
+    description: "The SQL warehouse the app uses to query data."
+    sql_warehouse:
+      id: "f50f8042564c0ed4"
+      permission: CAN_USE
 
 env:
-  - name: "DATABRICKS_WAREHOUSE_ID"
-    valueFrom: "sql-warehouse"
-  - name: STREAMLIT_BROWSER_GATHER_USAGE_STATS
-    value: "false"
+  - name: DATABRICKS_WAREHOUSE_ID
+    valueFrom: sql-warehouse
