@@ -12,6 +12,7 @@ st.set_page_config(
     page_title="Energy Management Aero Thermal - Stellantis",
 )
 
+// Set the default theme to light mode
 
 def set_light_theme():
     config_dir = ".streamlit"
